@@ -53,8 +53,9 @@ public class AutorisationController extends HttpServlet {
 
 		int anneeActuelle = LocalDate.now().getYear();
 		application.setAttribute("anneeActuelle", anneeActuelle);
+		
 
-		// int nbr = autorisationDao.getnbHrRestante(id, anneeActuelle);
+		int nbr = autorisationDao.getNbHeureRestante(id, anneeActuelle);
 		Calendar cal = Calendar.getInstance(Locale.FRANCE);
 		int weekNum = cal.get(Calendar.WEEK_OF_YEAR);
 		int nbHrRestante = (52 * 4) - ((weekNum * 4)+nbr);
@@ -70,10 +71,7 @@ public class AutorisationController extends HttpServlet {
 
 		String idParam = request.getParameter("id");
 		int id = 0; // Default value or an appropriate value in case of an empty string
-		LocalDate dateAutorisation = LocalDate.parse(request.getParameter("date"),
-				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		int numeroSemaine = dateAutorisation.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear());
-		int nbr = autorisationDao.getnbHr(id, numeroSemaine);
+
 		if (idParam != null && !idParam.isEmpty()) {
 			id = Integer.parseInt(idParam);
 		}
@@ -83,14 +81,16 @@ public class AutorisationController extends HttpServlet {
 		if (nbHrParam != null && !nbHrParam.isEmpty()) {
 			nbHr = Integer.parseInt(nbHrParam);
 		}
-	
-		
+		LocalDate dateAutorisation = LocalDate.parse(request.getParameter("date"),
+				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		int numeroSemaine = dateAutorisation.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear());
 
 		EnseignantDao enseignantDao = new EnseignantDao();
 		String description = request.getParameter("description"); // Get the description from the form
 		Autorisation autorisation = new Autorisation(id, nbHr, description, dateAutorisation); // Use the retrieved
 																									// description
 
+		int nbr = autorisationDao.getnbHr(id, numeroSemaine);
 
 		if (nbr + nbHr > 4) {
 			String message = "Attention, le nombre d'heures réalisées dans cette semaine dépasse 4 heures.";

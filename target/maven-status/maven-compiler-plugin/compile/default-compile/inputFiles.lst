@@ -1,0 +1,10 @@
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\model\User.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\Dao\UserDao.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\controllers\Update.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\Dao\EnseignantDao.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\controllers\Delete.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\model\Enseignant.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\controllers\Deconnexion.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\controllers\Ajouter.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\controllers\AuthController.java
+D:\JEE\Gestion_des_autorisation\src\main\java\tn\iit\glid22\utils\JDBCUtil.java
